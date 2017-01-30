@@ -1,6 +1,6 @@
 # IOBridgeLib
 
-![IOBridge picture](https://github.com/DeviceDrive/IOBridge/pictures/iobridge.png "IOBridge")
+![IOBridge picture](pictures/IOBridge.png)
 
 DeviceDrive IOBridge is an arduino zero shield which gives a developer access to a full range of different sensors and controllers.
 The full feature list of DeviceDrive IOBridge includes:
@@ -297,7 +297,7 @@ spikes.
 
 The default values for detection is set to 350(LOW) and 600(HIGH). All registerd values between these limits are defined as "NO movement".
 If the value goes over or under this preset, the library assumes Movement. See this picture for an example.
-![Movement graph](https://github.com/DeviceDrive/IOBridge/pictures/movement.png "Movement Sensor")
+![Movement graph](pictures/movement.png)
 
 |Motion sensor| Pin|
 |-------|-------------|
