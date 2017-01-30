@@ -1,0 +1,72 @@
+#######################################
+#	Copyright 2016 DeviceDrive AS
+#	
+#	Licensed under the Apache License, Version 2.0 (the "License");
+#	you may not use this file except in compliance with the License.
+#	You may obtain a copy of the License at
+#	
+#	http ://www.apache.org/licenses/LICENSE-2.0
+#	
+#	Unless required by applicable law or agreed to in writing, software
+#	distributed under the License is distributed on an "AS IS" BASIS,
+#	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#	See the License for the specific language governing permissions and
+#	limitations under the License.
+#
+#######################################
+
+#######################################
+# Syntax Coloring Map for IOBridge
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+IOBridgeLib										KEYWORD1
+
+#########################################################
+# Methods and Functions (KEYWORD2)
+#########################################################
+init											KEYWORD2
+handle											KEYWORD2
+set_button_sw200_press_callback					KEYWORD2
+set_button_sw201_press_callback					KEYWORD2
+set_button_sw200_longpress_callback				KEYWORD2
+set_button_sw201_longpress_callback				KEYWORD2
+
+set_motion_detector_on_motion_callback			KEYWORD2
+set_motion_detector_on_no_motion_callback		KEYWORD2
+
+set_temperature_temperature_changed_callback	KEYWORD2
+
+led_setColor									KEYWORD2
+led_fadeTo										KEYWORD2
+led_isFading									KEYWORD2
+led_stopFade									KEYWORD2
+led_startBlink									KEYWORD2
+led_stopBlink									KEYWORD2
+led_isBlinking									KEYWORD2
+led_getColor									KEYWORD2
+
+relay_set_relay1_on								KEYWORD2
+relay_set_relay1_off							KEYWORD2
+relay_set_relay2_on								KEYWORD2
+relay_set_relay2_off							KEYWORD2
+relay_set_relay1_toggle							KEYWORD2
+relay_set_relay2_toggle							KEYWORD2
+relay_get_relay1								KEYWORD2
+relay_get_relay2								KEYWORD2
+
+motion_set_movement_levels						KEYWORD2
+motion_enable_movement_sensor					KEYWORD2
+motion_disable_movement_sensor					KEYWORD2
+motion_get_current_movement						KEYWORD2
+
+temp_toggle_temperature_read					KEYWORD2
+temp_read_celsius								KEYWORD2
+temp_read_kelvin								KEYWORD2
+
+#########################################################
+# Constants (LITERAL1)
+#######################################
