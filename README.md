@@ -19,6 +19,17 @@ This library creates an wrapper class for the DeviceDrive IOBridge. This documen
 The user can choose between using the IOBridgeLib wrapper to setup all of the components automaticly or use each module speratly depending on 
 the users needs
 
+## Installation
+
+To install the library, clone or download this repository to your "Arduino/libraries" folder. 
+When it's copied to that folder, open Arduino IDE. From "Scetch" choose "Include library"->"IOBridgeLib"
+
+After copying the library to "Arduino/libraries" you can also just add
+    
+    #include "iobridgelib.h" 
+
+as the top statement of your .ino scetch.
+
 ## Hardware
 The IOBridge comes strapped with alot of different interfaces for users to utilize for their projects. This chapter summarizes all of the hardware spesific IO's:
 
