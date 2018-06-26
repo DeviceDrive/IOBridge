@@ -10,10 +10,6 @@ SpiUart::SpiUart(uint8_t addr_sspin)
 	peek_flag = 0;
 }
 
-SpiUart::SpiUart() {
-
-}
-
 void SpiUart::begin(uint32_t baud)
 {
     pinMode(device_address_sspin, OUTPUT);

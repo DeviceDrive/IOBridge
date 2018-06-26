@@ -27,6 +27,7 @@ void IOBridgeLib::init()
 	opto_two_controller = OptoCoupler(DEFAULT_OPTO_2_PIN);
 
 	remote_adc_controller = RemoteADC(DEFAULT_REMOTE_ADC_PIN);
+	Initialized = true;
 }
 
 void IOBridgeLib::handle()
@@ -40,23 +41,31 @@ void IOBridgeLib::handle()
 	opto_two_controller.handle();
 }
 
+SpiUart& IOBridgeLib::get_uart()
+{
+	CheckInit();		
+	if(Uart == nullptr)
+		Uart = new SpiUart(SPIUART_CS_PIN);
+		
+	return *Uart;
+}
 #pragma region Button callbacks
-void IOBridgeLib::set_button_sw200_press_callback(ButtonPressedCallback * cb)
+void IOBridgeLib::set_button_sw200_press_callback(ButtonPressedCallback cb)
 {
 	button_handler_sw200_controller.onPress(cb);
 }
 
-void IOBridgeLib::set_button_sw201_press_callback(ButtonPressedCallback * cb)
+void IOBridgeLib::set_button_sw201_press_callback(ButtonPressedCallback cb)
 {
 	button_handler_sw201_controller.onPress(cb);
 }
 
-void IOBridgeLib::set_button_sw200_longpress_callback(ButtonPressedCallback * cb)
+void IOBridgeLib::set_button_sw200_longpress_callback(ButtonPressedCallback cb)
 {
 	button_handler_sw200_controller.onLongPress(cb);
 }
 
-void IOBridgeLib::set_button_sw201_longpress_callback(ButtonPressedCallback * cb)
+void IOBridgeLib::set_button_sw201_longpress_callback(ButtonPressedCallback cb)
 {
 	button_handler_sw201_controller.onLongPress(cb);
 }
@@ -228,6 +237,14 @@ int IOBridgeLib::opto_two_get_current_state()
 float IOBridgeLib::adc_get_current_value()
 {
 	return remote_adc_controller.getCurrentValue();
+}
+ IOBridgeLib::~IOBridgeLib()
+{
+	if(Uart)
+	{
+		delete Uart;
+		Uart = nullptr;
+	}
 }
 #pragma endregion
 

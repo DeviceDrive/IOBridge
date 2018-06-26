@@ -1,22 +1,14 @@
 #include "ButtonHandler.h"
 
-ButtonHandler::ButtonHandler(uint32_t pin)
-{
-	this->pin = pin;
-}
-
-ButtonHandler::ButtonHandler()
-{
-}
 
 void ButtonHandler::setup(int type)
 {
-	pinMode(pin, type);
+	pinMode(Pin, type);
 }
 
 void ButtonHandler::handle()
 {
-	int button_now_pressed = !digitalRead(pin); // pin low -> pressed
+	int button_now_pressed = !digitalRead(Pin); // pin low -> pressed
 													 // Trigger current event
 	if (!button_now_pressed && button_was_pressed) {
 		if (button_pressed_counter < LONGPRESS) {
@@ -42,12 +34,12 @@ void ButtonHandler::handle()
 	button_was_pressed = button_now_pressed;
 }
 
-void ButtonHandler::onPress(ButtonPressedCallback * callback)
+void ButtonHandler::onPress(ButtonPressedCallback callback)
 {
 	this->button_press_cb = callback;
 }
 
-void ButtonHandler::onLongPress(ButtonPressedCallback * callback)
+void ButtonHandler::onLongPress(ButtonPressedCallback callback)
 {
 	this->button_long_press_cb = callback;
 }

@@ -70,42 +70,44 @@
 
 #define 	SC16IS750_CRYSTCAL_FREQ (18432000UL)
 
+class IOBridgeLib;
+
 class SpiUart : public Stream
 { 
-    public:
-		SpiUart();
-        SpiUart(uint8_t addr = SPIUART_CS_PIN);
-        void begin(uint32_t baud);                               
-        int read();
-        size_t write(uint8_t val);
-        int available();
-		uint8_t ping();
-		int peek();
-		void flush();
-		uint8_t InterruptPendingTest(void);
-		void    SetPinInterrupt(uint8_t io_int_ena);
-		void    InterruptControl(uint8_t int_ena);
-		void    ModemPin(uint8_t gpio);
-        
-    
-    private:
-        uint8_t device_address_sspin;
-        int16_t SetBaudrate(uint32_t baudrate);
-        uint8_t ReadRegister(uint8_t reg_addr);
-        void    WriteRegister(uint8_t reg_addr, uint8_t val);
-        void    SetLine(uint8_t data_length, uint8_t parity_select, uint8_t stop_length );
-        void    __isr(void);
-        void    FIFOEnable(uint8_t fifo_enable);
-        void    FIFOReset(uint8_t rx_fifo);
-        void    FIFOSetTriggerLevel(uint8_t rx_fifo, uint8_t length);
-        uint8_t FIFOAvailableData(void);
-        uint8_t FIFOAvailableSpace(void);
-        void    WriteByte(uint8_t val);
-        int     ReadByte(void);
-        void    EnableTransmit(uint8_t tx_enable);
-		int 	peek_buf;
-		uint8_t peek_flag;
-		
+private:
+	friend class IOBridgeLib;
+    SpiUart(uint8_t addr);
+	SpiUart(const SpiUart& copy) = delete;
+	SpiUart& operator = (const SpiUart& copy) = delete;
+public:
+    void begin(uint32_t baud);
+    int read();
+    size_t write(uint8_t val);
+    int available();
+    uint8_t ping();
+    int peek();
+    void flush();
+    uint8_t InterruptPendingTest(void);
+    void    SetPinInterrupt(uint8_t io_int_ena);
+    void    InterruptControl(uint8_t int_ena);
+    void    ModemPin(uint8_t gpio);
+private:
+    uint8_t device_address_sspin;
+    int16_t SetBaudrate(uint32_t baudrate);
+    uint8_t ReadRegister(uint8_t reg_addr);
+    void    WriteRegister(uint8_t reg_addr, uint8_t val);
+    void    SetLine(uint8_t data_length, uint8_t parity_select, uint8_t stop_length );
+    void    __isr(void);
+    void    FIFOEnable(uint8_t fifo_enable);
+    void    FIFOReset(uint8_t rx_fifo);
+    void    FIFOSetTriggerLevel(uint8_t rx_fifo, uint8_t length);
+    uint8_t FIFOAvailableData(void);
+    uint8_t FIFOAvailableSpace(void);
+    void    WriteByte(uint8_t val);
+    int     ReadByte(void);
+    void    EnableTransmit(uint8_t tx_enable);
+    int 	peek_buf;
+    uint8_t peek_flag;
 };
 
 #endif
