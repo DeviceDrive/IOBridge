@@ -45,7 +45,7 @@ SpiUart& IOBridgeLib::get_uart()
 {
 	CheckInit();		
 	if(Uart == nullptr)
-		Uart = new SpiUart(SPIUART_CS_PIN);
+		Uart = new SpiUart(7);
 		
 	return *Uart;
 }
