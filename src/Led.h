@@ -65,8 +65,6 @@ private:
 	{
 	}
 	
-	Led(const Led& copy) = default;
-	Led& operator = (const Led& copy) = default;
 	void setup();
 	void handle();
 	void setColor(int red, int green, int blue);

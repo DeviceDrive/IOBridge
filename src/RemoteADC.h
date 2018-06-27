@@ -16,8 +16,6 @@ private:
 private:
 	RemoteADC();
 	RemoteADC(int pin);
-	RemoteADC(const RemoteADC& copy) = default;
-	RemoteADC& operator = (const RemoteADC& copy) = default;
 
 	float getCurrentValue();
 	float read_adc();

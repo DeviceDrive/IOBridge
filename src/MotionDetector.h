@@ -34,8 +34,6 @@ private:
 private:
     MotionDetector();
     MotionDetector(int pin);
-	MotionDetector(const MotionDetector&) = default;
-	MotionDetector& operator = (const MotionDetector&) = default;
 	
     void enableMotionDetector();
     void disableMotionDetector();

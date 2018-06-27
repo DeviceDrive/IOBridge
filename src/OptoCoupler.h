@@ -23,9 +23,6 @@ private:
 
 	void onStateChangedCallback(OptoCouplerCallback *cb);
 	int getCurrentState();
-private:
-	OptoCoupler(const OptoCoupler&) = default;
-	OptoCoupler& operator = (const OptoCoupler&) = default;
 };
 
 #endif

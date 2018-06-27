@@ -23,7 +23,7 @@
 
 class IOBridgeLib
 {
- private:
+private:
 	 Led led_controller;
 	 
 	 ButtonHandler button_handler_sw200_controller;
@@ -42,7 +42,7 @@ class IOBridgeLib
 
 	 SpiUart* Uart = nullptr;
 	 bool Initialized = false;
- public:
+public:
 	void init();
 	void handle();
 

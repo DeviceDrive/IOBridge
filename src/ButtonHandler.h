@@ -31,7 +31,4 @@ private:
 	void handle();
 	void onPress(ButtonPressedCallback callback);
 	void onLongPress(ButtonPressedCallback callback);
-private:
-	ButtonHandler(const ButtonHandler&) = default;
-	ButtonHandler& operator = (const ButtonHandler&) = default;
 };

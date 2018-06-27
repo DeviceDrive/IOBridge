@@ -4,9 +4,11 @@
 #include <Arduino.h>
 #include "pindef.h"
 
+class IOBridgeLib;
 class RelayControl
 {
-  public:
+	friend IOBridgeLib;
+ private:
     RelayControl();
     RelayControl(int relay1, int relay2);
 
