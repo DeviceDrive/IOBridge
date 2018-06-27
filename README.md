@@ -444,15 +444,18 @@ The value will be bteeen 0 and 1024, based on the input voltage. The voltage ran
     */
 
 ### UART
-
-    #######################################
-    
-    NOT YET IMPLEMENTED IN THIS LIBRARY
-
-    #######################################
-
 The IOBridge has a full UART port you can utilize. It is operated and controlled over the SPI
-port on the Arduino. 
+port on the Arduino.  
+For communication, a CTS pin must be used (or pulled up to 3.3V).  
+
+    Example:
+
+        Iobridgelib.init();
+
+	    auto& uart = Iobridgelib.get_uart();
+	    uart.begin(115200);
+	    uart.println("TEST");
+
 
 ### 3.3V Output
 
