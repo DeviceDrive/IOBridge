@@ -1,15 +1,6 @@
 #include "Led.h"
 #include <Arduino.h>
 
-Led::Led() {
-
-}
-
-Led::Led(int pin_red, int pin_green, int pin_blue){
-    _pin_red = pin_red;
-    _pin_green = pin_green;
-    _pin_blue = pin_blue;
-}
 
 void Led::setup(){
     pinMode(_pin_red, OUTPUT);
@@ -130,10 +121,3 @@ void Led::crossFade() {
   }
 }
 
-Color Colors::RED(){      return Color{255,0,0};}
-Color Colors::ORANGE(){   return Color{255,128,0};}
-Color Colors::YELLOW(){   return Color{255,255,0};}
-Color Colors::GREEN(){    return Color{0,255,0};}
-Color Colors::BLUE(){     return Color{0,0,255};}
-Color Colors::CYAN(){     return Color{0,255,255};}
-Color Colors::MAGENTA(){  return Color{255,0,255};}

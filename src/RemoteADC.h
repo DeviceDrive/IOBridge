@@ -4,19 +4,21 @@
 #include <Arduino.h>
 #include "pindef.h"
 
-class RemoteADC {
+class IOBridgeLib;
 
+class RemoteADC 
+{
+	friend IOBridgeLib;
 private:
-	float read_adc();
 	int adc_read_pin;
 	float current_value;
 	float last_value;
-
-public:
+private:
 	RemoteADC();
 	RemoteADC(int pin);
 
 	float getCurrentValue();
+	float read_adc();
 };
 
 #endif

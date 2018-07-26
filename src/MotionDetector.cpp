@@ -20,9 +20,6 @@ void MotionDetector::setup_pins_and_smoothing()
 	digitalWrite(MOTION_DETECTOR_ENABLE_PIN, LOW);
 	setMovementLevels(MOVEMENT_LEVEL_LOW, MOVEMENT_LEVEL_HIGH);
 
-	for (int thisReading = 0; thisReading < num_readings; thisReading++) {
-		readings[thisReading] = 0;
-	}
 }
 
 void MotionDetector::enableMotionDetector() {

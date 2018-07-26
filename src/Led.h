@@ -9,37 +9,42 @@
 	#include "WProgram.h"
 #endif
 
-struct Color {
+struct Color 
+{
 	int red;
 	int green;
 	int blue;
 };
 
-class Colors {
-public:
-	static Color RED();
-	static Color ORANGE();
-	static Color YELLOW();
-	static Color GREEN();
-	static Color BLUE();
-	static Color CYAN();
-	static Color MAGENTA();
+struct Colors 
+{
+	static constexpr Color RED = {255,0,0};
+	static constexpr Color ORANGE = {255,128,0};
+	static constexpr Color YELLOW = {255,255,0};
+	static constexpr Color GREEN = {0,255,0};
+	static constexpr Color BLUE = {0,0,255};
+	static constexpr Color CYAN = {0,255,255};
+	static constexpr Color MAGENTA = {255,0,255};
 
 };
 
-class Led {
+class IOBridgeLib;
+
+class Led 
+{
 private:
+	friend IOBridgeLib;
 	int _pin_red;
 	int _pin_green;
 	int _pin_blue;
 
-	int current_red;
-	int current_green;
-	int current_blue;
+	int current_red = 0;
+	int current_green = 0;
+	int current_blue = 0;
 
 	bool shouldBlink = false;
 	bool blinkVal = false;
-	unsigned long blinkInterval;
+	unsigned long blinkInterval = 100;
 	unsigned long lastBlink = 0;
 
 	bool isCorssFading = false;
@@ -53,9 +58,13 @@ private:
 	int calculateStep(int prevValue, int endValue);
 	int calculateVal(int step, int val, int i);
 	void crossFade();
-public:
-	Led();
-	Led(int pin_red, int pin_green, int pin_blue);
+private:
+	Led() = default;
+	constexpr Led(int pin_red, int pin_green, int pin_blue)
+		:_pin_red(pin_red), _pin_green(pin_green), _pin_blue(pin_blue)
+	{
+	}
+	
 	void setup();
 	void handle();
 	void setColor(int red, int green, int blue);

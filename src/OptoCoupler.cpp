@@ -1,9 +1,5 @@
 #include "OptoCoupler.h"
 
-OptoCoupler::OptoCoupler()
-{
-}
-
 OptoCoupler::OptoCoupler(int opto_pin)
 {
 	this->read_opto_pin = opto_pin;

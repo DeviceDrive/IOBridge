@@ -5,16 +5,36 @@
 #include <inttypes.h>
 #include "pindef.h"
 
-#define MOVEMENT_LEVEL_LOW 350
-#define MOVEMENT_LEVEL_HIGH 600
+constexpr auto MOVEMENT_LEVEL_LOW  = 350;
+constexpr auto MOVEMENT_LEVEL_HIGH = 600;
 
 typedef void MotionDetectedCallback();
 
+class IOBridgeLib;
+
 class MotionDetector
 {
-  public:
+	friend IOBridgeLib;
+private:
+	static constexpr auto num_readings = 10;
+	int readIndex = 0;
+	float total = 0;
+	float average = 0;
+	float readings[num_readings] = {};
+
+	float movement_level_low = 400;
+	float movement_level_high = 510;
+	bool is_movement = false;
+	bool should_read_motion;
+	float move_level;
+	int read_motion_pin;
+	bool movement_detected;
+	float movement_timer;
+	float current_time;
+private:
     MotionDetector();
     MotionDetector(int pin);
+	
     void enableMotionDetector();
     void disableMotionDetector();
     void onMotionDetected(MotionDetectedCallback * motion_detected_cb);
@@ -22,24 +42,7 @@ class MotionDetector
     void motionHandler();
 	void setMovementLevels(float low, float high);
 	float getCurrentMovement();
-
-  private:
-	  int num_readings = 10;
-	  int readIndex = 0;
-	  float total = 0;
-	  float average = 0;
-	  float readings[10];
-
-
-	  float movement_level_low = 400;
-	  float movement_level_high = 510;
-	  bool is_movement = false;
-    bool should_read_motion;
-    float move_level;
-    int read_motion_pin;
-    bool movement_detected;
-    float movement_timer;
-    float current_time;
+private:
     MotionDetectedCallback *motion_detected_cb = NULL;
     MotionDetectedCallback *no_motion_detected_cb = NULL;
 	void setup_pins_and_smoothing();

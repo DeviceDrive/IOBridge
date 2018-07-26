@@ -23,7 +23,7 @@
 
 class IOBridgeLib
 {
- private:
+private:
 	 Led led_controller;
 	 
 	 ButtonHandler button_handler_sw200_controller;
@@ -40,16 +40,23 @@ class IOBridgeLib
 
 	 RemoteADC remote_adc_controller;
 
- public:
+	 SpiUart* Uart = nullptr;
+	 bool Initialized = false;
+public:
 	void init();
 	void handle();
 
+#pragma region Devices
+	SpiUart& get_uart();
+//	ButtonHandler& get_buttonSw200();
+//	ButtonHandler& get_buttonSw201();
+#pragma endregion
 #pragma region Callbacks
-	void set_button_sw200_press_callback(ButtonPressedCallback * cb);
-	void set_button_sw201_press_callback(ButtonPressedCallback * cb);
+	void set_button_sw200_press_callback(ButtonPressedCallback cb);
+	void set_button_sw201_press_callback(ButtonPressedCallback cb);
 
-	void set_button_sw200_longpress_callback(ButtonPressedCallback * cb);
-	void set_button_sw201_longpress_callback(ButtonPressedCallback * cb);
+	void set_button_sw200_longpress_callback(ButtonPressedCallback cb);
+	void set_button_sw201_longpress_callback(ButtonPressedCallback cb);
 
 	void set_motion_detector_on_motion_callback(MotionDetectedCallback *cb);
 	void set_motion_detector_on_no_motion_callback(MotionDetectedCallback *cb);
@@ -110,6 +117,12 @@ class IOBridgeLib
 	float adc_get_current_value();
 #pragma endregion
 
+	~IOBridgeLib();
+private:
+	inline void CheckInit()
+	{
+		if(!Initialized)init();
+	}
 };
 
 extern IOBridgeLib Iobridgelib;

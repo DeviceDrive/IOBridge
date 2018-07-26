@@ -4,22 +4,24 @@
 #include <Arduino.h>
 #include <inttypes.h>
 
+class IOBridgeLib;
+
 typedef void OptoCouplerCallback(int value);
 
-class OptoCoupler {
+class OptoCoupler 
+{
+	friend IOBridgeLib;
 private:
-	OptoCouplerCallback *onStateChangedCb = NULL;
-	int read_opto_pin;
-	int current_state;
-	int last_state;
-
-public:
-	OptoCoupler();
+	OptoCouplerCallback *onStateChangedCb = nullptr;
+	int read_opto_pin = 0;
+	int current_state = 0;
+	int last_state = 0;
+private:
+	constexpr OptoCoupler() = default;
 	OptoCoupler(int opto_pin);
 	void handle();
 
 	void onStateChangedCallback(OptoCouplerCallback *cb);
-	
 	int getCurrentState();
 };
 
